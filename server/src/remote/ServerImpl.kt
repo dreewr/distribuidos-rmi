@@ -6,11 +6,11 @@ import java.rmi.server.UnicastRemoteObject
 /**
  * Implementação do servidor para chamadas de trabalhadores interessados em vagas
  */
-class WorkerServiceImpl : UnicastRemoteObject(), WorkerServiceInterface {
+class ServerImpl : UnicastRemoteObject(), ServerInterface {
 
     @Throws(RemoteException::class)
     override fun echo(msg: String?){
-        println("Worker Service $msg")
+        println("Server called: $msg")
     }
 
 

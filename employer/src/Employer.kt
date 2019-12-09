@@ -1,7 +1,7 @@
 package deco.rodrigues.distribuidosrmi
 
 import deco.rodrigues.distribuidosrmi.remote.EmployerImpl
-import deco.rodrigues.distribuidosrmi.remote.EmployerServiceInterface
+import deco.rodrigues.distribuidosrmi.remote.ServerInterface
 import java.rmi.registry.LocateRegistry
 
 class Employer{
@@ -11,10 +11,10 @@ class Employer{
             println("Init Employer\n")
 
             val reg = LocateRegistry.getRegistry(1111)
-            val service: EmployerServiceInterface = reg.lookup("Employer Service") as EmployerServiceInterface
-            val employer = EmployerImpl(service)    //referência que é passada em métodos do servidor
+            val server: ServerInterface = reg.lookup("Server") as ServerInterface
+            val employer = EmployerImpl(server)    //referência que é passada em métodos do servidor
 
-            service.echo("Employer Connected")
+            server.echo("Employer Connected")
 
 
 

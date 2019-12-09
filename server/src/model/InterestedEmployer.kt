@@ -1,4 +1,15 @@
 package deco.rodrigues.distribuidosrmi.model
 
-class InterestedEmployer {
+import deco.rodrigues.distribuidosrmi.remote.WorkerInterface
+import java.io.Serializable
+import java.rmi.RemoteException
+
+class InterestedEmployer(val workerInterface: WorkerInterface, val area: String) :
+    Serializable {
+
+    @Throws(RemoteException::class)
+    fun emitNotification(msg: String?) {
+        // workerInterface.emitNofication(msg, "123")
+    }
+
 }

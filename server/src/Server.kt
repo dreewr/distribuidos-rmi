@@ -1,7 +1,6 @@
 package deco.rodrigues.distribuidosrmi
 
-import deco.rodrigues.distribuidosrmi.remote.EmployerServiceImpl
-import deco.rodrigues.distribuidosrmi.remote.WorkerServiceImpl
+import deco.rodrigues.distribuidosrmi.remote.ServerImpl
 import java.rmi.registry.LocateRegistry
 
 class Server {
@@ -12,14 +11,10 @@ class Server {
         fun main(args: Array<String>) {
             println("\n Server Started")
 
-            val employerService = LocateRegistry.createRegistry(1111)
-            val workerService = LocateRegistry.createRegistry(1112)
+            val registry = LocateRegistry.createRegistry(1111)
+            val server = ServerImpl()
 
-            val employerServer = EmployerServiceImpl()
-            val workerServer = WorkerServiceImpl()
-
-            employerService.rebind("Employer Service", employerServer)
-            workerService.rebind("Worker Service", workerServer)
+            registry.rebind("Server", server)
 
             println("\n Server Ready")
 
